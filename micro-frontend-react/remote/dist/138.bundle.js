@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshell=self.webpackChunkshell||[]).push([[138],{138:(e,l,s)=>{s.r(l),s.d(l,{default:()=>c});const t=s(883).faker.person.fullName(),n=document.createElement("h2");n.innerText="Hello From Remote! "+t;const c=n}}]);

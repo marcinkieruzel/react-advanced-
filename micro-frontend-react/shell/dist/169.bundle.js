@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshell=self.webpackChunkshell||[]).push([[169],{169:(e,l,n)=>{n.r(l);var t=n(634),o=n(973),r=n.n(o);setTimeout((()=>{document.querySelector("body").appendChild(r())}),3e3);const u=t.faker.person.fullName(),c=document.querySelector("body"),s=document.createElement("h1");s.innerText="Hello From Shell!"+u,c.appendChild(s)}}]);
