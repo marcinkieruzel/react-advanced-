@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useDeferredValue, useEffect, useState } from "react";
+import { ThemeContext } from "./Context";
 
-type Props = {
-  x: number;
-  y: number;
-};
+const BouncingBox = (): JSX.Element => {
+  const theme = React.useContext(ThemeContext);
+  const [currentScroll, setScroll] = useState(0);
+  const deferredScroll = useDeferredValue(currentScroll);
 
-const BouncingBox = ({ x, y }: Props): JSX.Element => {
+  useEffect(() => {
+    const scrollHandler = () => {
+      setScroll(window.scrollY);
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+  }, []);
+
   return (
     <div
       style={{
         position: "absolute",
-        top: y + 100,
-        left: x / 10,
+        top: deferredScroll + 100,
+        left: deferredScroll / 10,
         width: "40px",
         height: "40px",
-        backgroundColor: "red",
+        backgroundColor: theme === "light" ? "red" : "green",
         borderRadius: "50%",
+        transition: "all 0.1s",
       }}
     >
       BouncingBox

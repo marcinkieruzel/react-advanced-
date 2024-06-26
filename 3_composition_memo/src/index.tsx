@@ -3,13 +3,27 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Context from "./components/Context";
+import App from "./App";
+import Header from "./components/Header";
+import ListWrapper from "./components/ListWrapper";
+import Snaggy from "./components/Snaggy";
+import BouncingBox from "./components/BouncingBox";
+
+export const start = performance.now();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Context />
+    <Context>
+      <App>
+        <Header />
+        <ListWrapper />
+        <Snaggy />
+        <BouncingBox />
+      </App>
+    </Context>
   </React.StrictMode>
 );
 

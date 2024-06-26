@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 const Snaggy = (): JSX.Element => {
   const wait = (ms: number) => {
+    //Some importnant calculations
     const start = new Date().getTime();
     let end = start;
     while (end < start + ms) {
@@ -9,7 +10,7 @@ const Snaggy = (): JSX.Element => {
     }
   };
 
-  wait(200);
+  useMemo(() => wait(200), []);
 
   return <div>Snaggy</div>;
 };

@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import movies from "./movies.json";
 import List from "./List";
 
 type Props = {};
 
 const ListWrapper = ({}: Props): JSX.Element => {
-  const getMovies = (): Promise<
+  const [times, setTimer] = React.useState<number>(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimer((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const getMovies = useCallback((): Promise<
     {
       title: string;
       director: string;
@@ -17,7 +29,7 @@ const ListWrapper = ({}: Props): JSX.Element => {
         resolve(movies);
       }, 2000);
     });
-  };
+  }, []);
 
   return <List getMovies={getMovies} />;
 };

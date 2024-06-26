@@ -6,23 +6,9 @@ import BouncingBox from "./components/BouncingBox";
 import ListWrapper from "./components/ListWrapper";
 import { ThemeContext, ThemeDispatchContext } from "./components/Context";
 
-function App() {
-  const [times, setTime] = useState(new Date());
-  const [currentScroll, setScroll] = useState(0);
+function App({ children }: { children: React.ReactNode }) {
   const dispatch = useContext(ThemeDispatchContext);
   const theme = useContext(ThemeContext);
-
-  useEffect(() => {
-    setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    const scrollHandler = () => {
-      setScroll(window.scrollY);
-    };
-
-    window.addEventListener("scroll", scrollHandler);
-  }, []);
 
   return (
     <div
@@ -36,10 +22,9 @@ function App() {
         Change theme
       </button>
       <div className="container">
-        <Header time={times} />
-        <ListWrapper />
-        <Snaggy />
-        <BouncingBox x={currentScroll} y={currentScroll} />
+        {children}
+
+      
       </div>
     </div>
   );
