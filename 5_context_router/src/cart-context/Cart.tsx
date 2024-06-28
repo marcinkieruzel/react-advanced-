@@ -33,7 +33,7 @@ const Cart: React.FC<Props> = ({ children }): JSX.Element => {
   }, [state]);
 
   useEffect(() => {
-    eventEmitter.on(CartActionNames.ADD_TO_CART, (value: Property) => {
+    eventEmitter.on("add_property_to_cart", (value: Property) => {
       dispatch({ type: CartActionNames.ADD_TO_CART, payload: value });
     });
 
@@ -72,8 +72,8 @@ export const useDispatchCart = () => {
 };
 
 export const getProperties = (state: CartState) => state.properties;
-export const getCart = (state: CartState) =>
-  state.cart.sort((a: Property, b: Property) => a.id - b.id);
+// export const getCart = (state: CartState) =>
+//   state.cart.sort((a: Property, b: Property) => a.id - b.id);
 
 export const getPropertiesMemo = createSelector(
   [getProperties],
@@ -82,15 +82,15 @@ export const getPropertiesMemo = createSelector(
   }
 );
 
-export const getCartMemo = createSelector([getCart], (cart) => {
-  console.log("Selector called");
-  return cart;
-});
+// export const getCartMemo = createSelector([getCart], (cart) => {
+//   console.log("Selector called");
+//   return cart;
+// });
 
 export const useCartMemoData = () => {
   const cart = useCartContext();
 
   console.log("Cart memo data", cart);
 
-  return getCartMemo(cart);
+  return cart
 };

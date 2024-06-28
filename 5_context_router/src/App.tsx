@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import SingleProperty from "./components/SingleProperty";
 import { set } from "lodash";
 import { Property } from "../interfaces/Property.interface";
 import { Link } from "react-router-dom";

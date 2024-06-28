@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  getCartMemo,
-  useCartContext,
+  // getCartMemo,
+  // useCartContext,
   useCartMemoData,
   useDispatchCart,
 } from "../cart-context/Cart";
 import { CartActionNames } from "../cart-context/cart-context.interface";
+import { Property } from "../../interfaces/Property.interface";
 
 type Props = {
   children: React.ReactNode;
@@ -94,7 +95,7 @@ const Layout: React.FC<Props> = ({ children }): JSX.Element => {
                     >
                       {/* <a className="dropdown-item">ITEM</a> */}
 
-                      {cart.map((property) => {
+                      {cart.cart.map((property: Property) => {
                         return (
                           <div className="dropdown-item" key={property.id}>
                             {property.title}
