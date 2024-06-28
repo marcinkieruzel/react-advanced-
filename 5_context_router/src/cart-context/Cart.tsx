@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { Property } from "../../interfaces/Property.interface";
 import reducer from "./reducer";
-import { CartAction, CartState } from "./cart-context.interface";
+import { CartAction, CartActionNames, CartState } from "./cart-context.interface";
 import { createSelector } from "reselect";
+
+var EventEmitter = require("events");
+export const eventEmitter = new EventEmitter();
 
 type Props = {
   children: React.ReactNode;
@@ -28,6 +31,16 @@ const Cart: React.FC<Props> = ({ children }): JSX.Element => {
   useEffect(() => {
     console.log("State changed", state);
   }, [state]);
+
+  useEffect(() => {
+    eventEmitter.on(CartActionNames.ADD_TO_CART, (value: Property) => {
+      dispatch({ type: CartActionNames.ADD_TO_CART, payload: value });
+    });
+
+    return () => {
+      eventEmitter.removeAllListeners();
+    };
+  }, []);
 
   return (
     <CartContext.Provider value={state}>

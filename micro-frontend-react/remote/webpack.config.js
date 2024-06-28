@@ -9,7 +9,7 @@ console.log(deps);
 const singletonDeps = {};
 
 for (let dep of deps) {
-  singletonDeps[dep] = { singleton: true };
+  singletonDeps[dep] = { singleton: true, eager: true };
 }
 
 console.log(singletonDeps);
@@ -46,7 +46,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./Remote": "./src/Remote.js",
-        "./RemoteDecoupled": "./src/RemoteDecoupled.js"
+        "./RemoteDecoupled": "./src/RemoteDecoupled.js",
       },
       shared: singletonDeps,
     }),

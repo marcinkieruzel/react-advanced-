@@ -9,16 +9,21 @@ import { Property } from "../../interfaces/Property.interface";
 import useSwr from "swr";
 import { useDispatchCart } from "../cart-context/Cart";
 import { CartActionNames } from "../cart-context/cart-context.interface";
+import EventEmitter from "events";
 
-type Props = {};
+type Props = {
+  emitter: EventEmitter
+};
 
-const SingleProperty: React.FC<Props> = ({}): JSX.Element => {
+const SingleProperty: React.FC<Props> = ({
+  emitter
+}): JSX.Element => {
   const params = useParams<{ id: string }>();
   const dispatch = useDispatchCart();
 
   const { data, error, mutate } = useSwr<Property>(
     "http://localhost:3001/properties/" + params.id,
-    (url) => fetch(url).then((res) => res.json())
+    (url: string) => fetch(url).then((res) => res.json())
   );
 
   if (!data) return <p>Loading...</p>;
@@ -72,7 +77,12 @@ const SingleProperty: React.FC<Props> = ({}): JSX.Element => {
         <div className="col-3">
           <button
             onClick={() => {
-              dispatch({ type: CartActionNames.ADD_TO_CART, payload: data });
+              emitter.emit("test", "Hello from Single Property");
+
+
+              emitter.emit(CartActionNames.ADD_TO_CART, data);
+
+              // dispatch({ type: CartActionNames.ADD_TO_CART, payload: data });
             }}
             type="button"
             className="btn btn-primary"

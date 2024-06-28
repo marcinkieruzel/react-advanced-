@@ -28,7 +28,7 @@ function App() {
 
   const { data, error } = useSwr<Property[]>(
     "http://localhost:3001/properties",
-    (url) => fetch(url).then((res) => res.json())
+    (url: string) => fetch(url).then((res) => res.json())
   );
 
   useEffect(() => {

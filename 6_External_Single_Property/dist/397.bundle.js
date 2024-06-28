@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdiffrent_one=self.webpackChunkdiffrent_one||[]).push([[397],{397:(e,n,r)=>{r.r(n),r.d(n,{default:()=>f});var t=r(533),u=r.n(t);const f=function(e){return function(e){if(null==e)throw new TypeError("Cannot destructure "+e)}(e),u().createElement("div",null,"SingleProperty")}}}]);

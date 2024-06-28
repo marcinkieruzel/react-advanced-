@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdiffrent_one=self.webpackChunkdiffrent_one||[]).push([[296],{296:(e,t,o)=>{o.r(t);var r=o(533),n=o.n(r);o(338).createRoot(document.getElementById("root")).render(n().createElement("h1",null,"Hello world"))},338:(e,t,o)=>{var r=o(480);t.createRoot=r.createRoot,t.hydrateRoot=r.hydrateRoot}}]);
